@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,aAAa,EAAC,MAAM,kBAAkB,CAAC;AAE/C,OAAO,EAAC,cAAc,EAAC,MAAM,mBAAmB,CAAC","sourcesContent":["export {GraphtyModule} from './graphty.module';\nexport {GqlQueryInterface} from './graphty.interface';\nexport {GraphtyService} from './graphty.service';\n"]}

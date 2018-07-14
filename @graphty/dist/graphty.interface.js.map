@@ -1,0 +1,1 @@
+{"version":3,"file":"graphty.interface.js","sourceRoot":"","sources":["../../src/graphty.interface.ts"],"names":[],"mappings":"AAUC,CAAC","sourcesContent":["export interface GQLQProducerInterface {\n  fun: {\n    name: string;\n    args?: any\n  };\n  ret?: Array<string | any>;\n}\n\nexport interface GqlQueryInterface {\n  query: string\n};"]}
