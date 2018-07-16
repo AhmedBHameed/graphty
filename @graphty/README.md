@@ -1,3 +1,6 @@
+
+![Graphty](./graphty.jpg)
+
 # Graphty
 
 Angular 2+ Module to make it easer forming GraphQL queries.
