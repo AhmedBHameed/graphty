@@ -1,6 +1,6 @@
 
 <div style="text-align: center">
-<img src="./graphty.jpg" width="400" height="300">
+<img src="https://raw.githubusercontent.com/AhmedBHameed/graphty/master/src/images/graphty.jpg" width="400" height="300">
 </div>
 
 # Graphty
