@@ -1,5 +1,7 @@
 
-![Graphty](./src/images/graphty.jpg)
+<div style="text-align: center;">
+<img src="./src/images/graphty.jpg" width="400" height="300">
+</div>
 
 # Graphty
 
