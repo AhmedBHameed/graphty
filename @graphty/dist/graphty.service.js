@@ -36,7 +36,7 @@ var GraphtyService = /** @class */ (function () {
      * Set the body of the query by setting required keys as responded fields. It can be another function.
      * as nested query.
      *
-     * @param {Array<string | any>} funBody
+     * @param {Array<string>} funBody
      *
      * @returns {string}
      **/
@@ -48,9 +48,6 @@ var GraphtyService = /** @class */ (function () {
             if (typeof (funBody[key]) == 'string') {
                 gqlBody.push(funBody[key]);
             }
-            else if (typeof (funBody[key]) == 'object' && funBody[key].hasOwnProperty('query')) {
-                gqlBody.push(funBody[key]['query'].slice(funBody[key]['query'].indexOf("{") + 1, funBody[key]['query'].lastIndexOf("}")));
-            }
             else {
                 this.throError('Invalid parameter in body! the query body should be only type of string');
             }
@@ -59,15 +56,44 @@ var GraphtyService = /** @class */ (function () {
     };
     /**
      * Set the body of the query by setting required keys as responded fields. It can be another function.
+     * as nested query.
+     *
+     * @param {Array<string>} funBody
+     *
+     * @returns {string}
+     **/
+    GraphtyService.prototype.combineQuery = function (combineQuery, typeOfQuery) {
+        if (combineQuery === void 0) { combineQuery = []; }
+        if (typeOfQuery === void 0) { typeOfQuery = null; }
+        var numOfMutations = 0, numOfQueries = 0, len = combineQuery.length;
+        for (var i = 0; i < len; i++) {
+            combineQuery[i].query.indexOf('mutation') > -1 ? numOfMutations++ : numOfQueries++;
+        }
+        if (typeOfQuery) {
+            if (len != numOfMutations)
+                this.throError('Invalid type of combined queries! Queries should have the same type as "mutation" since it is called from "mutation" method.');
+        }
+        else {
+            if (len != numOfQueries)
+                this.throError('Invalid type of combined queries! Queries should have the same type as "root query" since it is called from "stagnation" method.');
+        }
+        return ',' + combineQuery.map(function (q) { return q.query.slice(q.query.indexOf("{") + 1, q.query.lastIndexOf("}")); }).join(',');
+    };
+    /**
+     * Set the body of the query by setting required keys as responded fields. It can be another function.
      * as nested query. The return query is type of root query and not mutation query.
      *
-     * @param {Array<string | any>} funBody
+     * @param {Array<string>} funBody
      *
      * @returns {GqlQuery}
      **/
     GraphtyService.prototype.stagnation = function (graphStruct) {
-        var query = '{' + this.setFuntion(graphStruct.fun.name, graphStruct.fun.args) + '{' +
-            this.setFunBody(graphStruct.ret) + '}}';
+        var query = '{' +
+            this.setFuntion(graphStruct.fun.name, graphStruct.fun.args) + '{' +
+            this.setFunBody(graphStruct.ret) + '}' +
+            (graphStruct.combine ?
+                this.combineQuery(graphStruct.combine) : '') +
+            '}';
         return { query: query };
     };
     /**
@@ -79,8 +105,12 @@ var GraphtyService = /** @class */ (function () {
      * @returns {GqlQuery}
      **/
     GraphtyService.prototype.mutation = function (graphStruct) {
-        var query = 'mutation{' + this.setFuntion(graphStruct.fun.name, graphStruct.fun.args) + '{' +
-            this.setFunBody(graphStruct.ret) + '}}';
+        var query = 'mutation{' +
+            this.setFuntion(graphStruct.fun.name, graphStruct.fun.args) + '{' +
+            this.setFunBody(graphStruct.ret) + '}' +
+            (graphStruct.combine ?
+                this.combineQuery(graphStruct.combine) : '') +
+            '}';
         return { query: query };
     };
     /**

@@ -37,7 +37,7 @@ Angular 2+ Module to make it easer forming GraphQL queries.
     ```typescript
     import { GraphtyService } from 'graphty';
         ...
-        constructor(private graphty: GraphryService){}
+        constructor(private graphty: GraphtyService){}
 
         getQuery(): GqlQueryInterface{
             return this.graphty.stagnation({
@@ -71,3 +71,22 @@ Angular 2+ Module to make it easer forming GraphQL queries.
     }
     ```
     Which you can pass them directly to the server who runs graphQL.
+
+# Versions history:
+
+<details>
+  <summary>V0.0.4</summary>
+  ```text
+  from now you can combine more than one query using combine property. Combining queries must be the same type either "Root queries" or "mutation queries" which sould be according to the method that called from.
+  stangnation -> combine queries should be all type of mutation.
+  mutation -> combine queries should be all type of mutation.
+  Also few bugs fixed.
+  ```
+</details>
+
+<details>
+  <summary>V0.0.3</summary>
+  ```text
+  First module initial
+  ```
+</details>

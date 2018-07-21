@@ -14,16 +14,25 @@ export declare class GraphtyService {
      * Set the body of the query by setting required keys as responded fields. It can be another function.
      * as nested query.
      *
-     * @param {Array<string | any>} funBody
+     * @param {Array<string>} funBody
      *
      * @returns {string}
      **/
-    setFunBody(funBody: Array<string | any>): string;
+    setFunBody(funBody: Array<string>): string;
+    /**
+     * Set the body of the query by setting required keys as responded fields. It can be another function.
+     * as nested query.
+     *
+     * @param {Array<string>} funBody
+     *
+     * @returns {string}
+     **/
+    combineQuery(combineQuery?: Array<GqlQueryInterface>, typeOfQuery?: string | null): string;
     /**
      * Set the body of the query by setting required keys as responded fields. It can be another function.
      * as nested query. The return query is type of root query and not mutation query.
      *
-     * @param {Array<string | any>} funBody
+     * @param {Array<string>} funBody
      *
      * @returns {GqlQuery}
      **/
