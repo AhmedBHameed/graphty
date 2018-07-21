@@ -97,5 +97,5 @@ Angular 2+ Module to make it easer forming GraphQL queries.
 <hr>
 <details>
   <summary>V0.0.3</summary>
-  First module initial
+  First module initialize
 </details>
