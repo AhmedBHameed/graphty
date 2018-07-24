@@ -8,5 +8,4 @@ export interface GQLQProducerInterface {
     args?: any
   };
   ret?: Array<string | any>;
-  combine?: Array<GqlQueryInterface> | undefined;
 }
