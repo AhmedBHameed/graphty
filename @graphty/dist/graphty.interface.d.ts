@@ -6,6 +6,6 @@ export interface GQLQProducerInterface {
         name: string;
         args?: any;
     };
-    ret?: Array<string>;
+    ret?: Array<string | any>;
     combine?: Array<GqlQueryInterface> | undefined;
 }

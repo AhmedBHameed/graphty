@@ -18,7 +18,7 @@ export declare class GraphtyService {
      *
      * @returns {string}
      **/
-    setFunBody(funBody: Array<string>): string;
+    setFunBody(funBody: Array<string | any>): string;
     /**
      * Set the body of the query by setting required keys as responded fields. It can be another function.
      * as nested query.
@@ -27,7 +27,7 @@ export declare class GraphtyService {
      *
      * @returns {string}
      **/
-    combineQuery(combineQuery?: Array<GqlQueryInterface>, typeOfQuery?: string | null): string;
+    combineQuery(combineQuery?: Array<GqlQueryInterface>, typeOfQuery?: string | null): Array<string>;
     /**
      * Set the body of the query by setting required keys as responded fields. It can be another function.
      * as nested query. The return query is type of root query and not mutation query.
@@ -46,6 +46,15 @@ export declare class GraphtyService {
      * @returns {GqlQuery}
      **/
     mutation(graphStruct: GQLQProducerInterface): GqlQueryInterface;
+    /**
+     * Set the body of the query by setting required keys as responded fields. It can be another function.
+     * as nested query. The returned query is type of mutation query.
+     *
+     * @param {Array<string | any>} funBody
+     *
+     * @returns {GqlQuery}
+     **/
+    combine(ArrGraphStruct: Array<GqlQueryInterface>): GqlQueryInterface;
     /**
      * Pop error if exists.
      *
