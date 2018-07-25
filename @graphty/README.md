@@ -117,6 +117,10 @@ Angular 2+ Module to make it easer forming GraphQL queries.
 # Versions history:
 
 <details>
+  <summary>V0.0.8</summary>
+  - Fix module documentation only.
+</details>
+<details>
   <summary>V0.0.7</summary>
   - Combine method seperated from stangnation, mutation methods.
   - also fix some bugs.
