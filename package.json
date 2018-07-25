@@ -3,7 +3,7 @@
   "module": "graphty.module.js",
   "jsnext:main": "graphty.module.js",
   "types": "graphty.module.d.ts",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "description": "Angular 2+ Module to make it easer forming GraphQL queries.",
   "main": "index.js",
   "scripts": {

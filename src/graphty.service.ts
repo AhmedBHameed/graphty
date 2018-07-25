@@ -19,7 +19,7 @@ export class GraphtyService {
     if (typeof args != 'object') this.throError('Invalid argument! one of the arguments must be type of object');
     if (args) {
       for (let key in args) {
-        variables.push(key + ':' +(typeof(args[key]) == 'string' ? ('"' + args[key] + '"') : args[key]));
+        variables.push(key + ':' +(typeof(args[key]) == 'string' ? ('"' + args[key].replace('"', '\\"') + '"') : args[key]));
       }
       funArguments += '(' + variables.join(',') + ')';
     }

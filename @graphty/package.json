@@ -1,6 +1,6 @@
 {
    "name": "graphty",
-   "version": "0.0.8",
+   "version": "0.0.9",
    "description": "Forming GraphQL query is now easier with graphty.",
    "main": "./dist/graphty.umd.min.js",
    "module": "esm5/graphty.js",

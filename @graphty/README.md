@@ -117,6 +117,10 @@ Angular 2+ Module to make it easer forming GraphQL queries.
 # Versions history:
 
 <details>
+  <summary>V0.0.9</summary>
+  - Fix string issue conversion with double quotation.
+</details>
+<details>
   <summary>V0.0.8</summary>
   - Fix module documentation only.
 </details>
@@ -125,7 +129,6 @@ Angular 2+ Module to make it easer forming GraphQL queries.
   - Combine method seperated from stangnation, mutation methods.
   - also fix some bugs.
 </details>
-<hr>
 <details>
   <summary>V0.0.4</summary>
   - from now you can combine more than one query using combine property. Combining queries must be the same type either "Root queries" or "mutation queries" which sould be according to the method that called from.
@@ -133,7 +136,6 @@ Angular 2+ Module to make it easer forming GraphQL queries.
   mutation -> combine queries should be all type of mutation.
   - Also few bugs fixed.
 </details>
-<hr>
 <details>
   <summary>V0.0.3</summary>
   - First module initialize
