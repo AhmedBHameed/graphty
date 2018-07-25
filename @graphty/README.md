@@ -38,16 +38,16 @@ Angular 2+ Module to make it easer forming GraphQL queries.
     ```typescript
     import { GraphtyService } from 'graphty';
         ...
-        constructor(private graphty: GraphtyService){}
+        constructor(private graf: GraphtyService){}
 
         getQuery(): GqlQueryInterface {
-            return this.graphty.stagnation({
+            return this.graf.stagnation({
                 fun: {
                     name: 'getFoo',    // required field and should be always string
                     args: {name: 'foo', limit: 15}   // args is optional also it is auto detected when string inserted.
                 },
                 ret: ['id', 'foo_category', 'date'], // requested body can be nested by another query if with the same structure.
-                combine: [this.gs.stagnation({        // To combine more that one query in one request (in 0.0.7 removed)
+                combine: [this.graf.stagnation({        // To combine more that one query in one request (in 0.0.7 removed)
                     fun: {
                         name: 'getAddress'
                     },
@@ -56,13 +56,13 @@ Angular 2+ Module to make it easer forming GraphQL queries.
             })
         }
         mutateQuery(): GqlQueryInterface {
-            return this.graphty.mutation({
+            return this.graf.mutation({
                 fun: {
                     name: 'setNewFoo',    // required field and should be always string
                     args: {name: 'foo', limit: 15}   // args is optional also it is auto detected when string inserted.
                 },
                 ret: ['id', 'foo_category', 'date'], // requested body can be nested by another query if with the same structure.
-                combine: [this.gs.mutation({        // To combine more that one query in one request (in 0.0.7 removed)
+                combine: [this.graf.mutation({        // To combine more that one query in one request (in 0.0.7 removed)
                     fun: {
                         name: 'getAddress',
                         args: {id: 12}
@@ -89,13 +89,13 @@ Angular 2+ Module to make it easer forming GraphQL queries.
     In version `0.0.7` property `combine` is seperated to reduce confusion which make it easier to form combined queries of graphQL. This method will reduce channel traffic between clients and server by combining two or more quries in one request. This should be with the respect of qurey type, since mutation should be send with `POST` and normal root query should send with `GET` they must not be mixed which is more reasonable. Mixing will throw error with a nice message ;)
 
     ```javascript
-        let GQLQ: GqlQueryInterface = this.gs.combine([
-                        this.gs.stagnation({
+        let GQLQ: GqlQueryInterface = this.graf.combine([
+                        this.graf.stagnation({
                             fun: {
                             name: 'getUser',
                             args: { username: 'foo' }
                             },
-                            ret: ['bar', this.gs.stagnation({   /** You can do nested object also as respond */
+                            ret: ['bar', this.graf.stagnation({   /** You can do nested object also as respond */
                                 fun: {
                                     name: 'ack'
                                 },
@@ -103,7 +103,7 @@ Angular 2+ Module to make it easer forming GraphQL queries.
                             })
                             ]
                         }),
-                        this.gs.stagnation({
+                        this.graf.stagnation({
                             fun: {
                                 name: 'getCategory',
                                 args: {name: 'foo', limit: 15}
